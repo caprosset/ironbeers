@@ -20,13 +20,19 @@ class BeerDetails extends Component {
   getSingleBeer = () => {
     const { id } = this.props.match.params;
     axios.get(`https://ih-beers-api2.herokuapp.com/beers/${id}`)
-    .then( (response) => this.setState(response.data)) 
+    .then( (response) => {
+      const singleBeer = response.data;
+      this.setState(singleBeer);
+    }) 
     .catch( (err) => console.log(err));
   }
 
   getRandomBeer = () => {
     axios.get('https://ih-beers-api2.herokuapp.com/beers/random') 
-    .then( (response) => this.setState(response.data)) 
+    .then( (response) => {
+      const randomBeer = response.data;
+      this.setState(randomBeer);
+    }) 
     .catch( (err) => console.log(err));
   } 
 
